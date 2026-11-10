@@ -1,0 +1,19 @@
+{
+  "measured_at": "2026-11-11",
+  "markets": 3056,
+  "conditional": 1154,
+  "funded_conditional": 127,
+  "median_funded_liquidity_usd": 25.92,
+  "total_conditional_liquidity_usd": 13599.57,
+  "futarchy": 398,
+  "base_markets": 165,
+  "base_conditional": 4,
+  "base_funded": 85,
+  "base_conditional_funded": 0,
+  "by_chain": {
+    "1": 14,
+    "10": 731,
+    "100": 2146,
+    "8453": 165
+  }
+}

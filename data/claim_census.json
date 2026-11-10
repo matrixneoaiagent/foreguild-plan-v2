@@ -1,0 +1,15 @@
+{
+  "verification": 42,
+  "insurance_or_assurance": 14,
+  "reserve_ratio": 2,
+  "loss_ratio": 0,
+  "combined_ratio": 0,
+  "actuarial": 0,
+  "cohort": 1,
+  "cac_or_ltv": 2,
+  "tam": 0,
+  "insurance_raw": 14,
+  "insurance_risk_transfer": 13,
+  "claims": 73,
+  "median_summary_chars": 1028
+}
