@@ -78,6 +78,7 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 tr.total td{border-top:2px solid var(--ink);font-weight:700;background:#f7f2e7}
 tr.sub td{background:#faf6ec;font-weight:700}
 .table-note{font:11.5px/1.5 var(--sans);color:var(--muted);margin:6px 0 18px}
+.briefmap td:nth-child(3){white-space:nowrap}
 /* grids */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
@@ -113,8 +114,9 @@ footer b{color:#fff}
 ol.sources{padding-left:24px;font:12.5px/1.55 var(--sans)}
 ol.sources li{margin-bottom:8px}
 ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
+ol.sources a{overflow-wrap:anywhere;word-break:break-word}
 /* responsive */
-@media(max-width:1320px){.nav .brand{display:none}}
+@media(max-width:1500px){.nav .brand{display:none}}
 @media(max-width:760px){
   .wrap{padding:0 18px}
   .hero{padding:42px 0 28px}
@@ -125,7 +127,8 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
   h2{font-size:27px;margin-top:48px}
   .grid2,.grid3,.kpi,.calc-grid,.calc-out{grid-template-columns:1fr}
   .nav .brand{display:none}
-  table{font-size:12px}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{font-size:12px;min-width:640px}
   th,td{padding:7px 8px}
   footer .wrap{grid-template-columns:1fr}
 }
@@ -201,6 +204,22 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <div class="wrap">
 <h2><span class="num">00 / Executive summary</span>The bet in one page</h2>
 
+<h3 style="margin-top:0">The brief, answered</h3>
+<p class="small muted">The contest asks four operating questions and one revenue question. This is the map; the sections behind it carry the arithmetic and the evidence.</p>
+<div class="table-wrap">
+<table class="briefmap">
+<thead><tr><th>Brief question</th><th>Answer</th><th>Where</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td><b>Where tasks come from</b></td><td>Three beachheads with funded buyers and executable acceptance tests: audit-finding remediation, on-chain treasury reconciliation, agent-eval harnesses.</td><td><a href="#market">§02</a>, <a href="#gtm">§06</a></td><td>Cantina 52 live / $58.9M available; 927 Base protocols, 257 &gt;$1M TVL; 10 buyer archetypes, no invented logos.</td></tr>
+<tr><td><b>How agents are assigned</b></td><td>Router decomposes the spec and matches bonded workers: direct under $250, sealed bid $250–$2k, reverse auction above $2k; 12 agent roles with budgets and prohibitions.</td><td><a href="#product">§03</a></td><td>Agent table with budget, permission, “cannot” and KPI; 10% worker bond; concentration caps.</td></tr>
+<tr><td><b>How completed work is assessed</b></td><td>The acceptance test is written before work starts; T0–T4 stack; 10% human T2 sample; one appeal; quarterly 200-task calibration with κ ≥ 0.7.</td><td><a href="#verification">§04</a></td><td>Cost per check, false-accept/reject targets, verification P&amp;L, appeal bond, claim leakage.</td></tr>
+<tr><td><b>Spending, disputes, human intervention</b></td><td>2-of-3 Safe; futarchy-approved line items; claims ladder with a 14-day decision and 21-day appeal; humans only above $10k, for a new class, or for legality.</td><td><a href="#governance">§07</a>, <a href="#ops">§08</a></td><td>Five constitutional rules; spend thresholds; claim/appeal SLAs; 72-hour safety pause.</td></tr>
+<tr><td><b>Revenue mandate</b></td><td>Principal contracts at 36% margin + 9% board take + 6% guarantee + Verify API. Net revenue $196k → $827k → $2.17M; break-even month 11.</td><td><a href="#revenue">§05</a></td><td><code>model.csv</code>; worked $6,000 contract; base/bull/bear; LTV/CAC; reserve ladder.</td></tr>
+<tr><td><b>Why futarchy, and why Seer</b></td><td>LR90 conditional markets forecast the loss ratio by class; the TWAP is an input to every quote; RAC90 with a 120% reserve circuit breaker is the constitution.</td><td><a href="#governance">§07</a></td><td>Exact Seer types and branches; resolution source; $5k/20-trader floor; $50k binding cap; thin-market formula.</td></tr>
+</tbody>
+</table>
+</div>
+
 <div class="thesis">
 <p class="big"><b>Foreguild should not be a job board that takes a fee. It should be a completion underwriter:</b> it quotes a fixed price and date for a verified outcome, carries the loss if the work fails, and keeps the spread between the price of certainty and the cost of delivery. The board is a distribution channel. The guarantee is the product.</p>
 </div>
@@ -209,7 +228,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <p>That question turns a marketplace P&amp;L into an underwriting P&amp;L. A 10% take on a $150 task is $15; a 10% human audit is $19. <span class="label assume">ASSUMPTION</span> The fee cannot pay for the check. A 10% sample of a $19 audit is $1.90 per task; at a 6% fee, the fee covers the sample only above $31.67, and gas pushes the floor to about $37.50. The field's own numbers reach for risk transfer; this plan names it as the business.</p>
 
-<p>Name it. A $6,000 remediation contract can carry a $360 guarantee premium (6%) against $168 of expected claims (2.8%), $36 of verification (0.6%) and $6 of payment (0.1%) — a 41.7% contribution margin on the premium. The underlying contract, if Foreguild is principal, carries a 36% net margin after the worker, rework, verification and payment. The same economics do not exist on a $15 task. <b>The guarantee is why the ticket can be large; the ticket is why the guarantee can be cheap.</b></p>
+<p>Name it. A $6,000 remediation contract can carry a $360 guarantee premium (6%) against $168 of expected claims (2.8%), $36 of verification (0.6%) and $6 of payment (0.1%) — a 41.7% contribution margin on the premium. The underlying contract, if Foreguild is principal, carries a 36% contribution margin after the worker, rework, verification and payment, before fixed costs and CAC. The same economics do not exist on a $15 task. <b>The guarantee is why the ticket can be large; the ticket is why the guarantee can be cheap.</b></p>
 
 <div class="kpi">
   <div><b>$196k</b><span>Y1 net revenue</span></div>
@@ -220,17 +239,21 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <p><b>The wedge is audit-finding remediation for crypto protocols.</b> It has funded demand (Cantina lists 52 live opportunities and $58.9M of payouts available, with 8,450 vulnerabilities found<sup class="fn"><a href="#s8">8</a></sup>), objective acceptance (a regression test that fails on the vulnerable commit and passes on the fix), and a buyer whose downside is an exploit, not a late deliverable. DefiLlama counts 1,258 protocols worldwide above $1M of TVL; 927 are deployed on Base, 257 of them above $1M.<sup class="fn"><a href="#s9">9</a></sup> Expand to on-chain treasury reconciliation and agent evaluation harnesses.</p>
 
-<p><b>The numbers are deliberately unheroic.</b> Base case: 47 principal contracts in Year 1, 150 in Year 2, 330 in Year 3; $6.8M of board GMV and $7.4M of guaranteed value by Year 3. Net revenue grows from $196k to $2.17M; EBITDA from −$104k to +$820k; the monthly P&amp;L crosses zero in month 11. The maximum cash trough is −$117k, so a $250k seed plus the contest prize is enough to reach the first proof. Every input is in the model and labelled.</p>
+<p><b>The numbers are deliberately unheroic.</b> Base case: 47 principal contracts in Year 1, 150 in Year 2, 330 in Year 3; $6.8M of board GMV and $7.4M of guaranteed value by Year 3. Net revenue grows from $196k to $2.17M; EBITDA from −$104k to +$820k; the monthly P&amp;L crosses zero in month 11. The maximum cash trough is −$117k, so a $250k seed is enough to reach the first proof; the contest prize is not required. Every input is in the model and labelled.</p>
 
 <p><b>Why futarchy.</b> The fee is a lever; the loss ratio is the survival variable. A 10-point loss-ratio miss on $444k of premium is $44k — a quarter of the guarantee's contribution — and a 30-point miss leaves almost no margin before fixed costs. Seer conditional scalar markets forecast the loss ratio by class; that forecast becomes an input to every quote. Futarchy is not a committee that ratifies strategy after the fact. It is the <b>underwriting committee</b>, and the metric is <b>RAC90</b> (risk-adjusted contribution over 90 days), with hard solvency guardrails no market can override.</p>
 
 <p class="small muted">Companion to the 8 November plan (claim 9502), not a replacement. The full “what is new / what is not claimed” is in §01. Every financial figure is a labelled assumption, not an observed result.</p>
+
+<div class="evidence">
+<b>Five checks in five minutes.</b> (1) Run <code>python3 model.py</code>; the annual totals match §05 and <code>model.csv</code>. (2) Open <code>data/claim_census.json</code>; 42 of 73 summaries mention verification, 0 mention a loss ratio. (3) Open <code>data/seer_depth.json</code>; 3,056 markets, 1,154 conditional, 127 funded, median $25.92. (4) Add the premium build in §05; it sums to $360 on a $6,000 contract. (5) Read the Seer specification in §07; every market has a type, a resolution source and a binding cap.
+</div>
 </div>
 </section>
 
 <section id="gap">
 <div class="wrap">
-<h2><span class="num">01 / The gap</span>73 entries. 42 describe verification. None price the failure.</h2>
+<h2><span class="num">01 / The gap</span>73 entries. 42 describe verification. None underwrite the failure.</h2>
 
 <p>We ran a census over the 73 claim summaries on POIDH #1531 — the only text every entrant published on-chain. The pattern is stark. Verification is mentioned in 42 of 73 summaries. Insurance or assurance appears in 13; one further match is a “quality assurance” use, not risk transfer. The words <b>loss ratio</b>, <b>combined ratio</b> and <b>actuarial</b> appear in none. Two summaries mention a reserve ratio. One mentions a cohort. None mentions TAM.<sup class="fn"><a href="#s5">5</a></sup></p>
 
@@ -293,7 +316,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <section id="market">
 <div class="wrap">
-<h2><span class="num">02 / Market and wedge</span>Start where failure is expensive and acceptance is executable.</h2>
+<h2><span class="num">02 / Market and wedge</span>Where tasks come from: start where failure is expensive and acceptance is executable.</h2>
 
 <p>Foreguild does not need a general marketplace. It needs three beachheads where (a) the buyer already has a budget, (b) the acceptance test can be written before the work starts, and (c) a failure is expensive enough that a guarantee is worth paying for. The first two are launch; the third is expansion.</p>
 
@@ -368,12 +391,12 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <section id="product">
 <div class="wrap">
-<h2><span class="num">03 / Product and agent swarm</span>One contract, ten states, twelve agents.</h2>
+<h2><span class="num">03 / Product and agent swarm</span>How agents are assigned: one contract, ten states, twelve agents.</h2>
 
 <p><b>The product is a completion guarantee.</b> Foreguild quotes a fixed price and a delivery date for a scoped outcome. The buyer funds escrow. Foreguild assigns the work to a bonded worker or its own swarm, verifies the acceptance test, and releases payment. If the work fails, the buyer gets a remedy: rework, a refund, or a payout from the guarantee reserve. Foreguild keeps the difference between the contract price and the cost of delivery, plus a premium if the buyer buys the guarantee separately. There are three surfaces:</p>
 
 <div class="grid3">
-<div class="card"><h4>Guaranteed Delivery</h4><p>Foreguild is principal. Fixed price, fixed date, full delivery risk. The core revenue line in Years 1–2. Average contract $5,000–$6,000; 36% net margin.</p></div>
+<div class="card"><h4>Guaranteed Delivery</h4><p>Foreguild is principal. Fixed price, fixed date, full delivery risk. The core revenue line in Years 1–2. Average contract $5,000–$6,000; 36% contribution margin before fixed costs.</p></div>
 <div class="card"><h4>Assured Board</h4><p>Foreguild is broker and guarantor. Third parties post escrowed work with a T0; Foreguild routes it, takes 9%, and sells a 6% completion guarantee. The scalable line.</p></div>
 <div class="card"><h4>Verify API</h4><p>Foreguild sells the verification harness to other marketplaces, DAOs and data teams: $1 per check, $500–$5,000/month retainers. 70% contribution margin.</p></div>
 </div>
@@ -442,9 +465,9 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <p>For a guarantee sold on a board task, the premium is priced from the expected claims cost, not from the fee:</p>
 <div class="thesis">
-<p class="mono" style="font-size:15px">premium rate = PP × (1 + risk load 25%) + expense load 1.8% + capital charge 0.6% + target load 1.0 pt</p>
-<p class="small muted" style="margin-bottom:0">If the Seer market forecasts a pure premium (PP) of 2.8% of guaranteed value, the technical premium is 3.5% + 1.8% + 0.6% + 1.0% = <b>6.9%</b>. The technical loss ratio is 40.6%. The model prices at 6.0%, a 0.9-point discount to the technical price; the plan's 46.7% loss ratio is measured at the model price. If the market forecasts 4.5%, the technical premium is 9.0% — and if the buyer will not pay it, the risk is declined. That is the market doing the underwriting.</p>
-<p class="small muted" style="margin-bottom:0">Read 6.9% as the technical price, not the model's price. The model uses <b>6.0%</b> to reflect what a new underwriter can charge in its first classes; the 0.9-point gap is uncollected margin, and it is why the plan's 46.7% loss ratio is higher than the 40.6% technical loss ratio. The gap is a deliberate conservative assumption, not a missing cost.</p>
+<p class="mono" style="font-size:15px">premium rate = PP × (1 + risk load 25%) + expense load 1.2% + capital charge 0.6% + target load 1.0 pt</p>
+<p class="small muted" style="margin-bottom:0">If the Seer market forecasts a pure premium (PP) of 2.8% of guaranteed value, the technical premium is 3.5% + 1.2% + 0.6% + 1.0% = <b>6.3%</b>. The technical loss ratio is 44.4%. The model prices at 6.0%, a 0.3-point discount to the technical price; the plan's 46.7% loss ratio is measured at the model price. If the market forecasts 4.5%, the technical premium is 8.4% — and if the buyer will not pay it, the risk is declined. That is the market doing the underwriting.</p>
+<p class="small muted" style="margin-bottom:0">Read 6.3% as the technical price, not the model's price. The model uses <b>6.0%</b> to reflect what a new underwriter can charge in its first classes; the 0.3-point gap is uncollected margin, and it is why the plan's 46.7% loss ratio is higher than the 44.4% technical loss ratio. The gap is a deliberate launch discount, not a missing cost; the underwriting core in §05 shows the full bridge.</p>
 </div>
 
 <h3>What a human does, and when</h3>
@@ -467,7 +490,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </section>
 <section id="verification">
 <div class="wrap">
-<h2><span class="num">04 / Verification is the product</span>Cost it like COGS, measure it like a loss ratio.</h2>
+<h2><span class="num">04 / Verification is the product</span>How work is assessed: cost it like COGS, measure it like a loss ratio.</h2>
 
 <p>Optimistic verification is not a new idea: UMA reports that 99.8% of its oracle requests resolve without a dispute, with only the residual escalating to a bonded court.<sup class="fn"><a href="#s12">12</a></sup> Foreguild uses the same shape — a deterministic check, a bonded challenge, a human panel only where the stake justifies it — and prices the residual into the guarantee.</p>
 
@@ -520,7 +543,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <p class="table-note">“Claim leakage” is the share of premium paid on claims that should have been caught by verification. It is the single best measure of verification quality: a verifier that passes everything has low cost and high leakage; a verifier that fails everything has high cost and high appeals. The dashboard balances both.</p>
 
 <h3>Appeals: priced, bounded, published</h3>
-<p>Either side can appeal within 14 days by posting a bond of 10% of the task value (minimum $25, maximum $500). One appeal per task. A second verifier with a different model mix re-scores the same evidence; if the verdict flips, the bond is returned and the escrow follows the new verdict. If it does not, the bond pays the second verifier. Above $10,000, the appeal goes to a bonded three-person panel; above $25,000, Kleros is the final court.<sup class="fn"><a href="#s13">13</a></sup> The protocol takes nothing from the appeal; the bond is a filter, not a revenue line. Every appeal is published with the evidence, the verdict and the reasoning, so the next quote is better.</p>
+<p>Either side can appeal within 14 days by posting a bond of 10% of the task value (minimum $25, maximum $500). One appeal per task. A second verifier with a different model mix re-scores the same evidence; if the verdict flips, the bond is returned and the escrow follows the new verdict. If it does not, the bond pays the second verifier. Above $10,000, the appeal goes to a bonded three-person panel; above $25,000, the claim is referred to a Kleros-based arbitration agreement.<sup class="fn"><a href="#s13">13</a></sup> The protocol takes nothing from the appeal; the bond is a filter, not a revenue line. Every appeal is published with the evidence, the verdict and the reasoning, so the next quote is better.</p>
 
 <h3>How verification quality is measured and improved</h3>
 <div class="grid2">
@@ -552,17 +575,18 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <thead><tr><th>Revenue line</th><th>Price</th><th>Who pays</th><th>Direct cost</th><th class="num">Contribution</th><th>When</th></tr></thead>
 <tbody>
 <tr><td><b>Guaranteed Delivery</b> (principal)</td><td>Fixed price; avg $5k–$6k</td><td>Protocol, DAO, fund</td><td>Worker 55%, rework 6%, verification 2.5%, payment 0.5%</td><td class="num">36% of contract</td><td>Day 1</td></tr>
-<tr><td><b>Board take</b></td><td>9% of task value</td><td>Buyer, at posting</td><td>Verification 1.8%, payment 0.4%</td><td class="num">6.8% of GMV</td><td>Month 2</td></tr>
-<tr><td><b>Completion guarantee</b></td><td>6.0% of guaranteed value</td><td>Buyer, optional</td><td>Claims 2.8%, verification 0.6%</td><td class="num">2.6% of guaranteed value</td><td>Month 2</td></tr>
-<tr><td><b>Verify API</b></td><td>$1.00 per check; $500–$5k/mo retainer</td><td>Marketplaces, DAOs, data teams</td><td>Compute + escalation $0.30</td><td class="num">70%</td><td>Month 4</td></tr>
-<tr><td><b>Float</b></td><td>~4% APY on escrow + reserve</td><td>Market</td><td>—</td><td class="num">100%</td><td>Month 3</td></tr>
-<tr><td><b>Data licensing</b></td><td>$10k–$50k/yr</td><td>Agent platforms, insurers, lenders</td><td>Anonymisation / legal</td><td class="num">~85%</td><td>Year 2</td></tr>
+<tr><td><b>Board take</b></td><td>9% of task value</td><td>Buyer, at posting</td><td>Verification 1.8%, payment 0.4%</td><td class="num">6.8% of GMV</td><td>Month 1 pilot; month 2 scale</td></tr>
+<tr><td><b>Completion guarantee</b></td><td>6.0% of guaranteed value</td><td>Buyer, optional</td><td>Claims 2.8%, verification 0.6%</td><td class="num">2.6% of guaranteed value</td><td>Month 1 pilot; month 2 scale</td></tr>
+<tr><td><b>Verify API</b></td><td>$1.00 per check; $500–$5k/mo retainer</td><td>Marketplaces, DAOs, data teams</td><td>Compute + escalation $0.30</td><td class="num">70%</td><td>Month 1 pilot; month 4 scale</td></tr>
+<tr><td><b>Float</b></td><td>~4% APY on escrow + reserve</td><td>Market</td><td>—</td><td class="num">100%</td><td>Month 1; disclosed separately</td></tr>
+<tr><td><b>Data licensing</b></td><td>$10k–$50k/yr per licensee; 3–10 by Y3</td><td>Agent platforms, insurers, lenders</td><td>Anonymisation / legal</td><td class="num">~85%</td><td>Year 2</td></tr>
 </tbody>
 </table>
 </div>
-<p>The guarantee is not only the 6% premium line. It is embedded in every principal contract: the 36% net margin on principal work is the price of carrying delivery risk. The explicit premium is the board's version of the same product. Read the two lines together, not separately.</p>
+<p>The guarantee is not only the 6% premium line. It is embedded in every principal contract: the 6% rework load in the direct-cost stack is the price of carrying delivery risk; the 36% contribution margin is the margin for finding and managing the work. The explicit premium is the board's version of the same product. Read the two lines together, not separately.</p>
 
 <p class="table-note">The 9% board take is deliberately below Upwork's 19.7% and Fiverr's 27.7% because the guarantee, not the take, is the margin. The 6% guarantee premium is priced from the pure premium; it is not a fixed markup. All rates are futarchy-tunable inside published bands.</p>
+<p class="table-note">Data licensing is per licensee, not one contract: the model's $180k Year-3 line is six licensees at $30k. The 15% anonymisation/legal cost is carried in the fixed legal/compliance line, so the model adds the data line gross. It is the lowest-confidence revenue line and is not load-bearing; the zero-case is covered in the sensitivity below.</p>
 
 <h3>Unit economics at the average</h3>
 <div class="table-wrap">
@@ -578,9 +602,67 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </table>
 </div>
 
-<p class="table-note">Guarantee contribution is before payment and fixed allocation. The waterfall in §05 shows a fully loaded unit view (33.3% after a 0.5% fixed allocation and 0.1% payment); the table above is the contribution used in the LTV calculation.</p>
+<p class="table-note">Guarantee contribution is before payment and fixed allocation. The waterfall in §05 shows a fully loaded unit view (33.3% after a 0.5% fixed allocation and 0.1% payment); the table above is the contribution used in the LTV calculation. The 6% rework load in the principal contract and the 6% guarantee premium are two ways to carry the same risk, not two charges on the same contract: a principal contract carries the risk in its price, while a board task buys the guarantee as a separate line.</p>
 
 <p>The guarantee is the only unit where the buyer's price is not anchored to the worker's hours. That is why it can carry a 43% contribution margin while the board take carries 76% of a much smaller fee. It is also why the guarantee has to be priced by class: a critical smart-contract fix and a research memo are not the same risk.</p>
+
+<h3 id="underwriting-core">The underwriting core, worked on one $6,000 contract</h3>
+<p>The guarantee is only credible if the premium can be built from the bottom up and the reserve can survive a bad quarter. This is the arithmetic a judge should check first. It also resolves the apparent gap between the 6.3% technical price in §03 and the 6.0% price the model uses. These are the mechanics of a contractual performance guarantee, not an insurance policy: the buyer is a business, the remedy is defined in the contract, and the legal characterization is addressed in §07.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Premium build</th><th class="num">Rate</th><th class="num">$6,000 contract</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Pure premium (expected claims)</td><td class="num">2.80%</td><td class="num">$168.00</td><td>46.7% loss ratio at the 6.0% model price</td></tr>
+<tr><td>Risk load (25% of pure)</td><td class="num">0.70%</td><td class="num">$42.00</td><td>Adverse selection, severity variance, tail</td></tr>
+<tr><td>Verification (T0–T2)</td><td class="num">0.60%</td><td class="num">$36.00</td><td>§04 cost stack; $40–$150 per contract</td></tr>
+<tr><td>Payment / FX</td><td class="num">0.10%</td><td class="num">$6.00</td><td>USDC on Base</td></tr>
+<tr><td>Fixed-cost allocation</td><td class="num">0.50%</td><td class="num">$30.00</td><td>0.5% unit allocation; full fixed base in §08</td></tr>
+<tr><td>Capital charge (8% × 1.5× 90-day claims)</td><td class="num">0.60%</td><td class="num">$36.00</td><td>RAC90 capital charge</td></tr>
+<tr><td>Target underwriting margin</td><td class="num">0.70%</td><td class="num">$42.00</td><td>11.7% of premium; total contribution after claims, verification, payment and fixed is 33.3%</td></tr>
+<tr class="total"><td>Model premium</td><td class="num">6.00%</td><td class="num">$360.00</td><td>Sums to the model's guarantee line</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">At the technical price of 6.3% (a 1.0% target margin rather than 0.7%), the same contract pays $378 and carries $60 of target margin. The 0.3-point gap is a launch discount, not a missing cost: it costs $18 per contract and is recovered by the quarter-4 repricing trigger — if the realised loss ratio is above 50% for two quarters, the class moves to the technical price or is declined. The technical price is <span class="mono">2.8% + 0.7% + 1.2% + 0.6% + 1.0% = 6.3%</span>, where the 1.2% expense load is verification 0.6%, payment 0.1% and fixed allocation 0.5%.</p>
+
+<h3>Claims waterfall: one $6,000 total failure</h3>
+<p>A completion guarantee is not a refund desk; it is a claims process with a liability cap. The cap is 100% of the contract price (maximum $250,000), excluding lost profits and consequential damages. The first remedy is rework; the second is a refund; the third is a documented replacement cost. A total failure is the worst case.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Step</th><th class="num">Amount</th><th>Rule / source</th><th>Timing</th></tr></thead>
+<tbody>
+<tr><td>Gross claim: total failure</td><td class="num">$6,000</td><td>100% of contract price; no lost profits or consequential damages</td><td>Day 0</td></tr>
+<tr><td>Less worker bond</td><td class="num">−$600</td><td>10% of task value, capped at $2,500</td><td>Day 14</td></tr>
+<tr><td>Less verifier bond if the verdict is overturned</td><td class="num">−$0 to −$500</td><td>20% of the verification fee, minimum $500</td><td>Day 21</td></tr>
+<tr><td>Less subrogation / replacement recovery</td><td class="num">−$0 to −$1,200</td><td>0–20% of the claim; published recovery rate</td><td>Day 30–90</td></tr>
+<tr class="sub"><td>Net claim to the reserve</td><td class="num">$3,700–$6,000</td><td>Paid from the claims reserve, not from premium</td><td>Day 14</td></tr>
+<tr><td>Expected claim at quote (2.8%)</td><td class="num">$168</td><td>Pure premium for this contract</td><td>Day 0</td></tr>
+<tr><td>Reserve held at 1.5× expected</td><td class="num">$252</td><td>1.5 × $168; the portfolio reserve is separate</td><td>Day 0</td></tr>
+<tr><td>Single-claim cap</td><td class="num">$250,000</td><td>Above the cap: decline, cede, or board-approved excess cover</td><td>At quote</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">A single total failure is 22–36× the expected claim for that contract and 15–24× its contract-level reserve. That is why the reserve is a portfolio buffer, not a per-contract wallet, and why the 90-day gate caps any single claim at $10k until the first 20 claims are observed.</p>
+
+<h3>Solvency ladder: what the plan does at 60%, 100% and 150% loss ratio</h3>
+<p>Run the Year-3 month-36 book: $708,333 of guaranteed value in the month, $8.5M annualised, $2.125M of 90-day guaranteed value. At the target 2.8% claims rate, 90-day expected claims are $59,500 and the required reserve at 1.5× is $89,250 — the model's month-36 reserve. The table holds the reserve fixed at that level and shows what a worse loss ratio does before any top-up.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Loss ratio</th><th class="num">90-day claims → required reserve</th><th class="num">Reserve ratio before top-up</th><th class="num">RAC90 per $1M guaranteed</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td><b>46.7% target</b></td><td class="num">$59,500 → $89,250</td><td class="num">150%</td><td class="num">+$14,000</td><td>Write; publish the loss triangle.</td></tr>
+<tr><td><b>60% amber</b></td><td class="num">$76,500 → $114,750</td><td class="num">117%</td><td class="num">+$6,000</td><td>Top up $25,500 within 30 days; freeze new business in the class if not; reprice +50 bp at the next quarter.</td></tr>
+<tr><td><b>100% red</b></td><td class="num">$127,500 → $191,250</td><td class="num">70%</td><td class="num">−$18,000</td><td>Stop writing the class immediately; draw the standby facility; cede 30% or exit; claims audit.</td></tr>
+<tr><td><b>150% black</b></td><td class="num">$191,250 → $286,875</td><td class="num">47%</td><td class="num">−$48,000</td><td>Safety pause; stop all underwriting; claims committee + counsel; wind down the class; publish the RAC90 bridge.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">90-day claims are 2.8% / 3.6% / 6.0% / 9.0% of the $2.125M 90-day guaranteed value; required reserve is 1.5×. RAC90 per $1M guaranteed = $60,000 premium − claims − $6,000 verification − $1,000 payment − $5,000 fixed allocation − $6,000 capital charge. The reserve ratio is the existing $89,250 reserve divided by the 90-day expected claims; the action is the top-up that restores 150%. This is a planning stress test, not an actuarial opinion.</p>
+
+<div class="warning"><b>The three rules.</b> At 60%: top up and reprice. At 100%: stop writing and cede or exit. At 150%: pause, wind down, and publish. None of these rules is a market vote; they are constitutional solvency triggers. A market can decide how to restore the ratio, not whether to ignore it. The 50% repricing trigger is earlier and separate: two quarters above 50% moves the class to the technical price; 60% is the reserve amber line; 70% on the first 20 claims is the hard stop.</div>
+
+<p><b>The tail is the real test.</b> A 100-contract cohort at $6,000 carries $600,000 of guaranteed value, $36,000 of premium, $16,800 of expected claims and a $25,200 reserve. One total failure nets $5,400 after the worker bond — 21% of the reserve. Five total failures net $27,000, 107% of the reserve; under a Poisson mean of 2.8 total failures per 100 contracts, that happens about 15% of the time. Eight failures net $43,200 and happen about 0.8% of the time. The standby facility, the single-claim cap and the 3× class aggregate cap (a class stops writing when paid plus reserved claims reach three times its expected quarterly claims) are the answer; the reserve alone is not. This is why the plan does not claim that a 1.5× reserve makes the guarantee riskless.</p>
+
 
 <h3>Cohorts and LTV</h3>
 <div class="table-wrap">
@@ -594,7 +676,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </tbody>
 </table>
 </div>
-<p class="table-note">LTV = ARPA × gross margin ÷ (1 − annual retention). Payback = CAC ÷ monthly gross profit. The board cohort's 3.0× LTV/CAC is intentionally marginal: the board is a customer-acquisition channel for the guarantee and principal products, not the profit engine. If the guarantee attach rate stays below 20%, the board should be run as a paid verification service, not a marketplace.</p>
+<p class="table-note">LTV = ARPA × gross margin ÷ (1 − annual retention). Payback = CAC ÷ monthly gross profit. The board cohort's 3.0× LTV/CAC is intentionally marginal: the board is a customer-acquisition channel for the guarantee and principal products, not the profit engine. Board GMV in the P&amp;L includes self-serve tasks and tasks posted by principal buyers; the 80 new board buyers are the LTV cohort, not the only source of board GMV. The $1,250 ARPA is the annual GMV of a new board buyer; the balance is cross-sell and repeat. New-buyer ARPA is the first-year cohort value; P&amp;L revenue includes expansion and repeat from prior cohorts, which is why Year-3 principal GCV exceeds 80 × $13k. If the guarantee attach rate stays below 20%, the board should be run as a paid verification service, not a marketplace.</p>
 
 <h3>Three-year P&amp;L, base case</h3>
 <div class="table-wrap">
@@ -611,7 +693,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <tr><td>Fixed costs</td><td class="num">$300k</td><td class="num">$650k</td><td class="num">$1.35M</td><td>2 → 6 → 12 FTE; legal, infra, market liquidity</td></tr>
 <tr class="total"><td>EBITDA</td><td class="num">−$104k</td><td class="num">+$177k</td><td class="num">+$820k</td><td>Break-even month 11</td></tr>
 <tr><td>EBITDA margin</td><td class="num">−53%</td><td class="num">21%</td><td class="num">38%</td><td>Operating leverage after the verification build</td></tr>
-<tr><td>Cumulative EBITDA</td><td class="num">−$104k</td><td class="num">+$74k</td><td class="num">+$894k</td><td>Trough −$117k in month 6</td></tr>
+<tr><td>Cumulative EBITDA</td><td class="num">−$104k</td><td class="num">+$74k</td><td class="num">+$894k</td><td>Trough −$117k in month 15</td></tr>
 <tr><td>Claims reserve (1.5× 90-day run-rate)</td><td class="num">$6k</td><td class="num">$29k</td><td class="num">$89k</td><td>Held in USDC / T-bills</td></tr>
 <tr><td>Operating reserve (6 months)</td><td class="num">$150k</td><td class="num">$325k</td><td class="num">$675k</td><td>Separate from claims reserve</td></tr>
 <tr><td>Headcount</td><td class="num">2</td><td class="num">6</td><td class="num">12</td><td>Plus 40–60 agent instances</td></tr>
@@ -620,10 +702,10 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </tbody>
 </table>
 </div>
-<p class="table-note">All figures are planning assumptions, not observed results. The monthly model is in <code>model.csv</code>; every annual figure above is the sum of twelve monthly rows. The claims reserve is 1.5× the next 90 days of expected claims. The operating reserve is a <em>target</em> of six months of fixed costs, funded by the seed, the prize and retained earnings; the model's cumulative EBITDA is not a cash balance and excludes financing. The two reserves are held separately and are not available for buybacks or marketing.</p>
+<p class="table-note">All figures are planning assumptions, not observed results. The monthly model is in <code>model.csv</code>; every annual figure above is the sum of twelve monthly rows. Guaranteed value is board GMV × attach plus external guarantees; principal contracts carry their risk in the 36% contribution and are not counted again in the 6% premium line. The guarantee line is shown before its 0.1% payment cost (about $7k in Year 3); the model treats it as immaterial, and the underwriting core in §05 shows the fully loaded unit economics. The claims reserve is 1.5× the next 90 days of expected claims. The operating reserve is a <em>target</em> of six months of fixed costs, funded by the seed and retained earnings; the contest prize, if awarded, is additional reserve. The model's cumulative EBITDA is not a cash balance and excludes financing. The two reserves are held separately and are not available for buybacks or marketing.</p>
 
 <div class="chart">
-<svg viewBox="0 0 860 380" role="img" aria-label="EBITDA and cumulative cash by year"><rect x="0" y="0" width="860" height="380" fill="#fffdf8" stroke="none" rx="0" opacity="1"/><line x1="70" y1="310.0" x2="830" y2="310.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="314.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$-200k</text><line x1="70" y1="265.0" x2="830" y2="265.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="269.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$0k</text><line x1="70" y1="220.0" x2="830" y2="220.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="224.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$200k</text><line x1="70" y1="175.0" x2="830" y2="175.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="179.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$400k</text><line x1="70" y1="130.0" x2="830" y2="130.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="134.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$600k</text><line x1="70" y1="85.0" x2="830" y2="85.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="89.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$800k</text><line x1="70" y1="40.0" x2="830" y2="40.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="44.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$1000k</text><line x1="70" y1="265.0" x2="830" y2="265.0" stroke="#12211d" stroke-width="1.4"/><rect x="155.0" y="265.0" width="90" height="23.332499999999982" fill="#c8552f" stroke="none" rx="0" opacity="1"/><text x="200" y="304.3325" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#c8552f" text-anchor="middle" font-weight="700">−$104k</text><text x="200" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 1</text><rect x="375.0" y="225.10750000000002" width="90" height="39.892499999999984" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="420" y="249.10750000000002" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">+$177k</text><text x="420" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 2</text><rect x="595.0" y="80.5" width="90" height="184.5" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="640" y="104.5" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">+$820k</text><text x="640" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 3</text><polyline points="200,288.3325 420,248.44 640,63.940000000000026" fill="none" stroke="#d9a441" stroke-width="3"/><circle cx="200" cy="288.3325" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="212" y="278.3325" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$-104k</text><circle cx="420" cy="248.44" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="432" y="238.44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$74k</text><circle cx="640" cy="63.940000000000026" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="652" y="53.940000000000026" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$894k</text><rect x="70" y="362" width="10" height="10" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="85" y="371" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="start" font-weight="400">EBITDA</text><line x1="150" y1="367" x2="170" y2="367" stroke="#d9a441" stroke-width="3"/><text x="176" y="371" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="start" font-weight="400">cumulative EBITDA</text><text x="830" y="32" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="end" font-weight="400">Base case; negative EBITDA funded from the seed and prize</text></svg>
+<svg viewBox="0 0 860 380" role="img" aria-label="EBITDA and cumulative cash by year"><rect x="0" y="0" width="860" height="380" fill="#fffdf8" stroke="none" rx="0" opacity="1"/><line x1="70" y1="310.0" x2="830" y2="310.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="314.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$-200k</text><line x1="70" y1="265.0" x2="830" y2="265.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="269.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$0k</text><line x1="70" y1="220.0" x2="830" y2="220.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="224.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$200k</text><line x1="70" y1="175.0" x2="830" y2="175.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="179.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$400k</text><line x1="70" y1="130.0" x2="830" y2="130.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="134.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$600k</text><line x1="70" y1="85.0" x2="830" y2="85.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="89.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$800k</text><line x1="70" y1="40.0" x2="830" y2="40.0" stroke="#d8d2c4" stroke-width="1"/><text x="60" y="44.0" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#5d6b64" text-anchor="end" font-weight="400">$1000k</text><line x1="70" y1="265.0" x2="830" y2="265.0" stroke="#12211d" stroke-width="1.4"/><rect x="155.0" y="265.0" width="90" height="23.332499999999982" fill="#c8552f" stroke="none" rx="0" opacity="1"/><text x="200" y="304.3325" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#c8552f" text-anchor="middle" font-weight="700">−$104k</text><text x="200" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 1</text><rect x="375.0" y="225.10750000000002" width="90" height="39.892499999999984" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="420" y="249.10750000000002" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">+$177k</text><text x="420" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 2</text><rect x="595.0" y="80.5" width="90" height="184.5" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="640" y="104.5" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">+$820k</text><text x="640" y="332" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">Year 3</text><polyline points="200,288.3325 420,248.44 640,63.940000000000026" fill="none" stroke="#d9a441" stroke-width="3"/><circle cx="200" cy="288.3325" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="212" y="278.3325" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$-104k</text><circle cx="420" cy="248.44" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="432" y="238.44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$74k</text><circle cx="640" cy="63.940000000000026" r="4.5" fill="#d9a441" stroke="#fff" stroke-width="1.5"/><text x="652" y="53.940000000000026" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="#d9a441" text-anchor="start" font-weight="700">$894k</text><rect x="70" y="362" width="10" height="10" fill="#2f7d68" stroke="none" rx="0" opacity="1"/><text x="85" y="371" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="start" font-weight="400">EBITDA</text><line x1="150" y1="367" x2="170" y2="367" stroke="#d9a441" stroke-width="3"/><text x="176" y="371" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="start" font-weight="400">cumulative EBITDA</text><text x="830" y="32" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="end" font-weight="400">Base case; negative EBITDA funded from the seed</text></svg>
 </div>
 <p class="caption">EBITDA turns positive in month 11; cumulative EBITDA troughs at −$117k and is recovered inside Year 2. The bear case is the one that needs a standby facility.</p>
 
@@ -647,6 +729,8 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <h3>What moves the model</h3>
 <p>The model is most sensitive to three variables: <b>average contract value</b>, <b>loss ratio</b>, and <b>guarantee attach rate</b>. A $1,000 increase in the average contract value adds about $119k of Year-3 net revenue at 330 contracts. A 10-point increase in the loss ratio reduces Year-3 EBITDA by about $44k (10% × $444k of premium) — a quarter of the guarantee contribution; a 30-point increase reduces it by $133k, which wipes out the guarantee margin. A 10-point increase in attach adds about $18k of Year-3 net revenue (10% × $6.8M board GMV × 2.6% net). The fee rate is a one-dimensional lever: one point on the board take is $68k, but it is also the easiest variable for a competitor to undercut.</p>
+
+<p><b>The most aggressive line is external guarantees.</b> The model assumes $25k / $125k / $333k a month of standalone guarantees on work sourced outside the board. If that line is zero, Year-3 EBITDA falls by about $104k to $716k and Year-3 net revenue to about $2.07M; Year-1 EBITDA falls by about $8k. The plan still reaches break-even in month 11 and stays inside the $250k seed, but the margin is thinner. The first 10 external guarantees are a day-90 test, and the line is labelled low-confidence in Appendix A.</p>
 
 <div class="calc" id="calculator">
 <h3>Move the assumptions</h3>
@@ -697,7 +781,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <div class="grid2">
 <div class="card">
 <h4>Audit firms (primary)</h4>
-<p>Audit partners have the client, the finding and the deadline; they do not want to do remediation. Foreguild white-labels the fix and pays a 15% referral fee on the first contract, 7.5% on repeats. The firm keeps the relationship and the audit; Foreguild gets a warm, funded buyer. Target: 5 firms, 20 referred contracts in the first 90 days.</p>
+<p>Audit partners have the client, the finding and the deadline; they do not want to do remediation. Foreguild white-labels the fix and pays a 15% referral fee on the first contract, 7.5% on repeats. The firm keeps the relationship and the audit; Foreguild gets a warm, funded buyer. Target: 5 firms, 10 referrals and 3–5 referred contracts in the first 90 days.</p>
 </div>
 <div class="card">
 <h4>Base ecosystem (distribution)</h4>
@@ -709,12 +793,12 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </div>
 <div class="card">
 <h4>Agent frameworks (supply and demand)</h4>
-<p>An MCP server exposes <code>quote</code>, <code>submit</code>, <code>verify</code> and <code>settle</code> tools; an x402 endpoint lets an agent pay per check without an account.<sup class="fn"><a href="#s20">20</a></sup><sup class="fn"><a href="#s21">21</a></sup> The integration is a library call, not a sales call. Target: 3 frameworks, 1,000 agent-initiated checks/month by month 9.</p>
+<p>An MCP server exposes <code>quote</code>, <code>submit</code>, <code>verify</code> and <code>settle</code> tools; an x402 endpoint lets an agent pay per check without an account.<sup class="fn"><a href="#s20">20</a></sup><sup class="fn"><a href="#s21">21</a></sup> The integration is a library call, not a sales call. Target: 3 frameworks, 10,000 agent-initiated checks/month by month 9.</p>
 </div>
 </div>
 
 <h3>Sales math, without fantasy</h3>
-<p>One human seller, 20 targeted outbound messages a week, an 8% substantive reply rate, a 25% pilot-to-paid rate. That is 0.4 new paid buyers per week, or 1.7 per month, before referrals. Add five audit-firm partners at two referrals each per quarter and the engine reaches 4–5 new principal buyers a month by month 6. The 90-day target is 10 paid pilots and 6 paid contracts, not 100. A plan that assumes a 20% reply rate has not tried to sell.</p>
+<p>One human seller, 20 targeted outbound messages a week, an 8% substantive reply rate, a 25% pilot-to-paid rate. That is 0.4 new paid buyers per week, or 1.7 per month, before referrals. Add five audit-firm partners at two referrals each per quarter and the engine reaches 2–3 new principal buyers a month by month 6. The 90-day target is 3 paid pilots and 6–10 paid contracts, not 100. A plan that assumes a 20% reply rate has not tried to sell.</p>
 
 <div class="table-wrap">
 <table>
@@ -738,7 +822,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <section id="governance">
 <div class="wrap">
-<h2><span class="num">07 / Futarchy governance</span>The underwriting committee that is paid to be right.</h2>
+<h2><span class="num">07 / Futarchy governance</span>How spending and disputes are governed: the underwriting committee that is paid to be right.</h2>
 
 <p>Futarchy's original rule is simple: vote on values, but bet on beliefs.<sup class="fn"><a href="#s15">15</a></sup><sup class="fn"><a href="#s34">34</a></sup> MetaDAO has run 96 proposals for 14 organizations since November 2023, so the mechanism is no longer only a thought experiment.<sup class="fn"><a href="#s14">14</a></sup> What is still unsettled is where it binds. That is a design choice, not a slogan.</p>
 
@@ -793,22 +877,52 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <p>Seer's conditional market primitive is the right tool: a parent market resolves the decision, and child markets resolve the metric under each branch.<sup class="fn"><a href="#s1">1</a></sup> We use a parent binary and two conditional scalar markets on RAC90. The parent is not a token-price futarchy market; Foreguild has no token and will not invent one. It is a decision market with a measured outcome.</p>
 
 <div class="chart">
-<svg viewBox="0 0 860 430" role="img" aria-label="Seer parent market and two conditional scalar markets on RAC90"><rect x="0" y="0" width="860" height="430" fill="#fffdf8" stroke="none" rx="0" opacity="1"/><rect x="270" y="26" width="320" height="76" fill="#fff" stroke="#12211d" rx="2" opacity="1"/><text x="430" y="50" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="700">PARENT · binary</text><text x="430" y="72" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#12211d" text-anchor="middle" font-weight="700">Will FIP-2027-03 be adopted?</text><text x="430" y="118" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">7-day trade · 72h TWAP · Reality.eth + Kleros</text><line x1="430" y1="132" x2="430" y2="150" stroke="#12211d" stroke-width="2"/><line x1="200" y1="150" x2="660" y2="150" stroke="#12211d" stroke-width="2"/><line x1="200" y1="150" x2="200" y2="172" stroke="#12211d" stroke-width="2"/><line x1="660" y1="150" x2="660" y2="172" stroke="#12211d" stroke-width="2"/><rect x="70" y="172" width="260" height="120" fill="#eef6f2" stroke="#2f7d68" rx="2" opacity="1"/><text x="200" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#2f7d68" text-anchor="middle" font-weight="700">YES branch · scalar</text><text x="200" y="218" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">What will RAC90 be if</text><text x="200" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">FIP-03 is adopted?</text><text x="200" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">range −$500k … +$2M</text><rect x="530" y="172" width="260" height="120" fill="#fbeee9" stroke="#c8552f" rx="2" opacity="1"/><text x="660" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#c8552f" text-anchor="middle" font-weight="700">NO branch · scalar</text><text x="660" y="218" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">What will RAC90 be if</text><text x="660" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">FIP-03 is not adopted?</text><text x="660" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">range −$500k … +$2M</text><rect x="180" y="306" width="500" height="54" fill="#fff" stroke="#12211d" rx="2" opacity="1"/><text x="430" y="328" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">ADOPT iff YES TWAP &gt; NO TWAP by 5%</text><text x="430" y="346" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">and liquidity ≥ $5,000 and ≥ 20 unique traders</text><line x1="430" y1="360" x2="430" y2="382" stroke="#d9a441" stroke-width="2"/><polygon points="430,390 424,380 436,380" fill="#d9a441"/><text x="430" y="410" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">Audited RAC90 report → hash anchored on Base → Reality.eth → Kleros appeal</text></svg>
+<svg viewBox="0 0 860 430" role="img" aria-label="Seer parent market and two conditional scalar markets on RAC90"><rect x="0" y="0" width="860" height="430" fill="#fffdf8" stroke="none" rx="0" opacity="1"/><rect x="270" y="26" width="320" height="76" fill="#fff" stroke="#12211d" rx="2" opacity="1"/><text x="430" y="50" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="700">PARENT · binary</text><text x="430" y="72" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#12211d" text-anchor="middle" font-weight="700">Will FIP-2027-03 be adopted?</text><text x="430" y="118" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">7-day trade · 72h TWAP · Reality.eth resolution</text><line x1="430" y1="132" x2="430" y2="150" stroke="#12211d" stroke-width="2"/><line x1="200" y1="150" x2="660" y2="150" stroke="#12211d" stroke-width="2"/><line x1="200" y1="150" x2="200" y2="172" stroke="#12211d" stroke-width="2"/><line x1="660" y1="150" x2="660" y2="172" stroke="#12211d" stroke-width="2"/><rect x="70" y="172" width="260" height="120" fill="#eef6f2" stroke="#2f7d68" rx="2" opacity="1"/><text x="200" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#2f7d68" text-anchor="middle" font-weight="700">YES branch · scalar</text><text x="200" y="218" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">What will RAC90 be if</text><text x="200" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">FIP-03 is adopted?</text><text x="200" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">range $0 … $2.5M (RAC90 + $500k)</text><rect x="530" y="172" width="260" height="120" fill="#fbeee9" stroke="#c8552f" rx="2" opacity="1"/><text x="660" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#c8552f" text-anchor="middle" font-weight="700">NO branch · scalar</text><text x="660" y="218" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">What will RAC90 be if</text><text x="660" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="400">FIP-03 is not adopted?</text><text x="660" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">range $0 … $2.5M (RAC90 + $500k)</text><rect x="180" y="306" width="500" height="54" fill="#fff" stroke="#12211d" rx="2" opacity="1"/><text x="430" y="328" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#12211d" text-anchor="middle" font-weight="700">ADOPT iff YES TWAP &gt; NO TWAP by 5%</text><text x="430" y="346" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">and liquidity ≥ $5,000 and ≥ 20 unique traders</text><line x1="430" y1="360" x2="430" y2="382" stroke="#d9a441" stroke-width="2"/><polygon points="430,390 424,380 436,380" fill="#d9a441"/><text x="430" y="410" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="#5d6b64" text-anchor="middle" font-weight="400">Audited RAC90 report → hash anchored on Base → Reality.eth resolution; Kleros claims backstop</text></svg>
 </div>
-<p class="caption">The decision structure. The parent resolves whether the proposal is adopted; the two child markets price RAC90 under adoption and status quo. The branch that does not happen is voided, and its traders get their collateral back. This is the standard conditional-market structure Seer documents.<sup class="fn"><a href="#s1">1</a></sup></p>
+<p class="caption">The decision structure. The parent resolves whether the proposal is adopted; the two child markets price RAC90 under adoption and status quo. The RAC90 branches are scalar markets with a +$500k offset because Seer bounds are uint256: a realised −$500k resolves at 0, and +$2M at $2.5M. The branch that does not happen becomes obsolete: the child's collateral is the parent's wrapped outcome token, which is worthless if the parent resolves the other way. Foreguild seeds both branches and books the losing seed as a decision cost, not a refundable deposit. This is the standard conditional-market structure Seer documents.<sup class="fn"><a href="#s1">1</a></sup></p>
 
-<ul>
 <p>Seer's own thesis is that prediction markets will increasingly be consumed by algorithms at machine speed, not only by humans reading a headline.<sup class="fn"><a href="#s30">30</a></sup> A loss-ratio market is exactly that: a recurring, resolvable number that an underwriting agent can read and act on. Seer's conditional-market documentation provides the primitive.<sup class="fn"><a href="#s31">31</a></sup></p>
 
-<li><b>Chain:</b> decisions run on Gnosis, where Seer's documented <code>FutarchyFactory</code> deployment is; the treasury and escrow stay on Base.<sup class="fn"><a href="#s2">2</a></sup> The decision resolves on Gnosis; the treasurer executes the outcome on Base under the operating agreement. Funds never leave Base. Base hosts the cheaper advisory markets and the customer-facing receipts.</li>
+<ul>
+<li><b>Chain:</b> decisions run on Gnosis, where Seer's <code>MarketFactory</code> and <code>FutarchyFactory</code> are deployed; the plan uses <code>MarketFactory</code> for these markets. The treasury and escrow stay on Base.<sup class="fn"><a href="#s2">2</a></sup> The decision resolves on Gnosis; the treasurer executes the outcome on Base under the operating agreement. Funds never leave Base. Base hosts the cheaper advisory markets and the customer-facing receipts.</li>
 <li><b>Collateral:</b> USDC or sDAI on Gnosis, whichever the market supports; the plan does not assume a Foreguild token.</li>
-<li><b>Resolution:</b> the Auditor publishes a signed RAC90 report with the treasury addresses, the claims ledger, the verification invoices and the SQL. The report hash is anchored on Base. The Reality.eth question resolves on that hash; Kleros is the appeal court.<sup class="fn"><a href="#s1">1</a></sup><sup class="fn"><a href="#s13">13</a></sup></li>
-<li><b>TWAP:</b> seven days of trading, 72-hour TWAP before the decision, 48-hour timelock before execution. No single-block prints, no last-minute candles.</li>
-<li><b>Fail branch:</b> the status-quo branch is seeded with the same budget as the pass branch. If it is too thin to price, the decision is advisory, not binding. This directly addresses the “fail-conditional market goes quiet” failure that Frontier Research documents in MetaDAO's implementation.<sup class="fn"><a href="#s17">17</a></sup></li>
+<li><b>Resolution:</b> the Auditor publishes a signed RAC90 report with the treasury addresses, the claims ledger, the verification invoices and the SQL. The report hash is anchored on Base. The Reality.eth question asks whether the anchored report shows the stated RAC90; the report is the evidence, not the question. Kleros is the claims-appeal backstop for claims above $25k, not part of Seer's market resolution.<sup class="fn"><a href="#s1">1</a></sup><sup class="fn"><a href="#s13">13</a></sup></li>
+<li><b>TWAP:</b> seven days of trading, 72-hour TWAP before the decision, 48-hour timelock before execution. The TWAP is computed from Seer's public trade data and published with the report. No single-block prints, no last-minute candles.</li>
+<li><b>Fail branch:</b> the status-quo branch is seeded with the same budget as the pass branch. The seed is at risk and is budgeted as a decision cost, not a refundable deposit. If it is too thin to price, the decision is advisory, not binding. This directly addresses the “fail-conditional market goes quiet” failure that Frontier Research documents in MetaDAO's implementation.<sup class="fn"><a href="#s17">17</a></sup></li>
 </ul>
 
+<h4 id="seer-spec">The exact specification, to the contract call</h4>
+<p>Every row maps to a Seer <code>MarketFactory</code> call. The performance and decision-child rows are conditional markets: the call is the same, but <code>parentMarket</code> and <code>parentOutcome</code> are set, and the child's collateral is the parent's wrapped outcome token, not USDC. The plan uses the plain <code>MarketFactory</code>, not <code>FutarchyFactory</code>, because the decision is a scalar RAC90 question, not a relative bet on two collateral tokens.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Market</th><th>Seer call / type</th><th>Exact question</th><th>Resolution source</th></tr></thead>
+<tbody>
+<tr><td><b>LR90-C</b><br><span class="small muted">performance</span></td><td><code>createScalarMarket</code><br>2 outcomes LOW/HIGH<br>bounds 0–150%</td><td>“What will Foreguild's paid loss ratio be for class C in the next 90 days?”</td><td>Auditor's signed claims ledger ÷ premium earned; report hash anchored on Base; Reality.eth answer.</td></tr>
+<tr><td><b>VC90</b><br><span class="small muted">performance</span></td><td><code>createScalarMarket</code><br>bounds 0–5%</td><td>“What will verification cost per $1,000 of guaranteed value be in the next 90 days?”</td><td>Verification invoices ÷ guaranteed value; Auditor report.</td></tr>
+<tr><td><b>RR</b><br><span class="small muted">performance</span></td><td><code>createScalarMarket</code><br>bounds 0–300%</td><td>“What will the reserve ratio be at quarter end?”</td><td>Reserve ÷ 90-day expected claims; Safe addresses + Auditor report.</td></tr>
+<tr><td><b>FIP parent</b><br><span class="small muted">decision</span></td><td><code>createCategoricalMarket</code><br>ADOPT / REJECT</td><td>“Will FIP-2027-03 be adopted by 31 Mar 2027?”</td><td>Board resolution + execution transaction; the parent is a governance question, not a token price.</td></tr>
+<tr><td><b>RAC90 pass</b><br><span class="small muted">conditional</span></td><td><code>createScalarMarket</code><br><code>parentOutcome = 0</code><br>bounds $0…$2.5M<br>(RAC90 + $500k offset)</td><td>“What will RAC90 be over the 90 days after adoption?”</td><td>Auditor's RAC90 report, reported net of the $500k offset; same anchored hash.</td></tr>
+<tr><td><b>RAC90 fail</b><br><span class="small muted">conditional</span></td><td><code>createScalarMarket</code><br><code>parentOutcome = 1</code><br>bounds $0…$2.5M<br>(RAC90 + $500k offset)</td><td>“What will RAC90 be over the 90 days if the proposal is rejected?”</td><td>Auditor's RAC90 report, reported net of the $500k offset; same anchored hash.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">Seer's <code>MarketFactory</code> exposes <code>createCategoricalMarket</code>, <code>createMultiCategoricalMarket</code>, <code>createScalarMarket</code> and <code>createMultiScalarMarket</code>; conditional markets use the same calls with <code>parentMarket</code> and <code>parentOutcome</code> set. All scalar rows use two outcomes (LOW/HIGH); the categorical parent uses ADOPT/REJECT. Seer scalar bounds are <code>uint256</code>, so the RAC90 branches use a +$500k offset: a realised −$500k resolves at 0 and +$2M at $2.5M; the Auditor reports RAC90 net of the offset. On Gnosis, <code>MarketFactory</code> is <code>0x83183DA839Ce8228E31Ae41222EaD9EDBb5cDcf1</code>, <code>FutarchyFactory</code> is <code>0xe789e4A240d153AC55e32106821e785E71f6b792</code>, and <code>ConditionalRouter</code> is <code>0x774284d5cDFeC3A0a0eBc7283aD4d5b33013c29c</code>; the plan uses <code>MarketFactory</code>, not <code>FutarchyFactory</code>, because the decision is a scalar RAC90 question, not a relative bet on two collateral tokens. Addresses and call signatures are from Seer's deployed-contracts and create-a-market documentation.<sup class="fn"><a href="#s1">1</a></sup><sup class="fn"><a href="#s2">2</a></sup></p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Market family</th><th class="num">Seed</th><th>Advisory below</th><th class="num">Binding cap</th><th>If too thin</th></tr></thead>
+<tbody>
+<tr><td>LR90-C, VC90, RR</td><td class="num">$2,000 each</td><td>$5,000 two-sided liquidity or 20 unique traders</td><td class="num">$50,000 impact</td><td>Use the credibility weight <code>w</code> below; if <code>w &lt; 0.30</code>, the actuary uses its own loss experience only.</td></tr>
+<tr><td>FIP parent + both RAC90 branches</td><td class="num">$6,000 total</td><td>$5,000 / 20 per branch</td><td class="num">$50,000 impact</td><td>Advisory; the board decides and publishes the reason. If the fail branch is thin, the decision cannot bind.</td></tr>
+<tr><td>Any decision above $50,000</td><td class="num">—</td><td>$25,000 / 40 traders</td><td class="num">Board ratification</td><td>Advisory unless the depth is met; the board must publish a reasoned override.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p><b>The thin-market rule, in one formula.</b> Let <code>L</code> be two-sided liquidity, <code>N</code> unique traders with non-zero volume, and <code>T</code> days of trading. The market weight is <code>w = min(1, L/$25,000) × min(1, N/40) × min(1, T/14)</code>. If <code>w &lt; 0.30</code>, the market is advisory and the actuary uses its own loss experience (<code>w = 0</code>). If <code>0.30 ≤ w &lt; 0.70</code>, the pure premium is <code>w × PP_market + (1−w) × PP_actuary</code>. If <code>w ≥ 0.70</code> and <code>L ≥ $5,000</code> and <code>N ≥ 20</code>, the market can bind up to $50,000; above that it needs <code>L ≥ $25,000</code>, <code>N ≥ 40</code> and board ratification. Worked: <code>L = $6,000, N = 22, T = 7</code> gives <code>w = 0.066</code>, so a 3.2% market forecast against a 2.6% actuary forecast prices at 2.6%, not 3.2%. <code>L = $25,000, N = 50, T = 14</code> gives <code>w = 1.0</code>, so the same 3.2% forecast prices at 3.2% and the premium rises or the risk is declined.</p>
+
 <h3>Liquidity, manipulation and the binding cap</h3>
-<p>We measured Seer's conditional market board on 11 November 2026: <b>3,056</b> markets across the supported chains, <b>1,154</b> conditional, <b>127</b> with any liquidity, a median funded conditional market of <b>$25.92</b>, and <b>$13,600</b> of liquidity across the entire conditional set. The most careful prior measurement, on 9 November, found 3,051 / 1,153 / 125 / $13,446.<sup class="fn"><a href="#s4">4</a></sup> The board grew by five markets and about $154 in two days. All four Base conditional markets that mention Foreguild are unfunded. That is the honest starting point: <b>the infrastructure exists; the depth does not.</b></p>
+<p>We measured Seer's conditional market board on 11 November 2026: <b>3,056</b> markets across the supported chains, <b>1,154</b> conditional, <b>127</b> with any liquidity, a median funded conditional market of <b>$25.92</b>, and <b>$13,600</b> of liquidity across the entire conditional set. The most careful prior measurement, on 9 November, found 3,051 / 1,153 / 125 / $13,446.<sup class="fn"><a href="#s4">4</a></sup> The board grew by five markets and about $154 in two days. All four Base conditional markets are unfunded; three mention Foreguild. That is the honest starting point: <b>the infrastructure exists; the depth does not.</b></p>
 
 <div class="table-wrap">
 <table>
@@ -826,11 +940,10 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <p>Given that depth, a binding rule that ignores liquidity is theatre. Foreguild's rule is explicit:</p>
 <ul>
-<li><b>Advisory below $5,000</b> of two-sided liquidity or 20 unique traders. The market informs the board; the board decides and publishes its reasoning.</li>
-<li><b>Binding up to $50,000</b> of financial impact at $5,000 liquidity and 20 traders. Above that, the market is advisory unless it holds $25,000 and 40 traders.</li>
+<li><b>Binding is earned, not assumed.</b> Below $5,000 of two-sided liquidity or 20 unique traders, advisory. Up to $50,000 of financial impact at $5,000 and 20 traders. Above that, advisory unless the market holds $25,000, has 40 traders, and the board ratifies the decision.</li>
 <li><b>Decision bond:</b> the proposer posts 2% of the maximum financial impact (minimum $500). If the decision is later shown to reduce RAC90 by more than the market forecast, the bond is slashed to the reserve. This makes a proposal a bet, not a press release.</li>
 <li><b>Insider ban:</b> operators, auditors, market makers and their affiliates disclose positions and may not trade markets that set their own compensation or reserve. Violations void the round.</li>
-<li><b>Red team:</b> $10,000 a year to pay an independent team to try to manipulate the markets; the results are published and the thresholds are adjusted. A governance system that never tests its own manipulation cost is a belief system.</li>
+<li><b>Red team:</b> $10,000 a year (budgeted in the §08 legal/compliance/audit line) to pay an independent team to try to manipulate the markets; the results are published and the thresholds are adjusted. A governance system that never tests its own manipulation cost is a belief system.</li>
 </ul>
 
 <p>Critics have warned for years that thin markets, risk premia and manipulation distort decision prices, and that a decision rule can itself bias the market it reads.<sup class="fn"><a href="#s16">16</a></sup><sup class="fn"><a href="#s18">18</a></sup><sup class="fn"><a href="#s19">19</a></sup> Foreguild does not pretend to solve those problems in general. It narrows the decision to a measured number, seeds both branches, caps the binding stake and publishes the manipulation cost. Where the market is too thin, it says so and does not bind.</p>
@@ -843,7 +956,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <p>A <b>Guild Pass</b> is a non-transferable credential earned by 90 days of verified work, 10 settled tasks, or $5,000 of buyer spend. One active proposal per pass per quarter; a bond of 0.5% of the proposed spend (minimum $100, maximum $2,500). Agents can hold a pass through their operator wallet; the operator is liable for the bond. The monthly cycle is: proposal window (7 days), market trading (7 days), TWAP + timelock (48 hours), execution (7 days), post-mortem (30 days). Quarterly, the performance markets resolve and the board publishes the RAC90 bridge. Annually, the charter is reviewed; the five constitutional rules are not open to a simple market.</p>
 
 <h3>The human and legal wrapper</h3>
-<p>Foreguild Labs LLC (Delaware) is the operating company and the contracting party. A foundation holds the brand and the verification library; the LLC licenses them. The operating agreement binds the LLC to implement market outcomes inside the five constitutional rules, subject to the board's fiduciary duty. If the board overrides a market for legality, solvency or a broken oracle, it must publish the reason within 48 hours and submit a ratification market within 7 days. That is the honest version of “futarchy inside a legal wrapper”: the market is binding where it can be, and the board is accountable where it cannot.</p>
+<p>Foreguild Labs LLC (to be formed in Delaware) will be the operating company and the contracting party. A foundation (to be formed) will hold the brand and the verification library; the LLC will license them. The operating agreement will bind the LLC to implement market outcomes inside the five constitutional rules, subject to the board's fiduciary duty. If the board overrides a market for legality, solvency or a broken oracle, it must publish the reason within 48 hours and submit a ratification market within 7 days. That is the honest version of “futarchy inside a legal wrapper”: the market is binding where it can be, and the board is accountable where it cannot.</p>
 
 <div class="warning"><b>Not insurance.</b> The guarantee is a contractual performance remedy sold to businesses, not an insurance policy sold to consumers. It is initially funded from the company's own reserve, not from public premiums. Before selling to anyone outside the approved business list, Foreguild obtains a legal opinion on the guarantee structure in its operating jurisdictions, and if it later cedes risk to a carrier, it does so through a licensed partner. The plan does not assume a license it does not have.</div>
 
@@ -854,7 +967,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 
 <section id="ops">
 <div class="wrap">
-<h2><span class="num">08 / Operations and org</span>Small human core, large agent surface, boring controls.</h2>
+<h2><span class="num">08 / Operations and org</span>Human intervention: small human core, large agent surface, boring controls.</h2>
 
 <p>Foreguild is not an agent swarm that happens to have a company. It is a company with a small human core and a large, auditable agent surface. The humans own the risks that cannot be delegated: legal, custody, key accounts, claims above threshold, and the final call on a new class. The agents own the volume.</p>
 
@@ -892,7 +1005,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <tr><td>T2 human audit</td><td>72 hours</td><td>Verification lead</td></tr>
 <tr><td>Payout after acceptance</td><td>Same day (USDC)</td><td>Treasurer</td></tr>
 <tr><td>Claim decision</td><td>14 days</td><td>Claims lead + steward</td></tr>
-<tr><td>Appeal decision</td><td>21 days</td><td>Kleros</td></tr>
+<tr><td>Appeal decision</td><td>21 days</td><td>Kleros-based arbitration (claims &gt;$25k)</td></tr>
 <tr><td>Platform uptime</td><td>99.5%</td><td>Engineering</td></tr>
 </tbody>
 </table>
@@ -919,7 +1032,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <tr><td>Verification auditors</td><td class="num">$30k</td><td class="num">$70k</td><td class="num">$160k</td><td>Variable with sample volume</td></tr>
 <tr><td>Infrastructure</td><td class="num">$25k</td><td class="num">$45k</td><td class="num">$80k</td><td>RPC, storage, CI, observability</td></tr>
 <tr><td>Legal / compliance / audit</td><td class="num">$35k</td><td class="num">$45k</td><td class="num">$80k</td><td>Entity, guarantee opinion, annual audit</td></tr>
-<tr><td>Market liquidity</td><td class="num">$10k</td><td class="num">$20k</td><td class="num">$40k</td><td>$2k per binding market; recoverable</td></tr>
+<tr><td>Market liquidity</td><td class="num">$10k</td><td class="num">$20k</td><td class="num">$40k</td><td>$2k per branch; a decision with a parent and two branches is $6k; losing branches are a decision cost, not a recoverable deposit</td></tr>
 <tr><td>Sales / travel / events</td><td class="num">$15k</td><td class="num">$15k</td><td class="num">$40k</td><td>Base/Seer workshops, no paid ads</td></tr>
 <tr><td>Insurance / misc</td><td class="num">$5k</td><td class="num">$5k</td><td class="num">$20k</td><td>E&amp;O, D&amp;O, incidentals</td></tr>
 <tr class="total"><td>Fixed costs</td><td class="num">$300k</td><td class="num">$650k</td><td class="num">$1.35M</td><td>Matches the P&amp;L</td></tr>
@@ -932,7 +1045,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <div class="wrap">
 <h2><span class="num">09 / The first 90 days</span>Buy the first ten receipts. Then decide.</h2>
 
-<p>The first 90 days are not a product launch. They are a test of one hypothesis: <b>will a buyer with a live finding pay a fixed price for a guaranteed close, and will the first 20 claims show a loss ratio below 55%?</b> Everything else — the board, the API, the market series — is built only after that test produces a receipt.</p>
+<p>The first 90 days are not a product launch. They are a test of one hypothesis: <b>will a buyer with a live finding pay a fixed price for a guaranteed close, and will the first two claims keep the running loss ratio below 55%?</b> The 20-claim test is the next gate, not the 90-day one. Everything else — the board, the API, the market series — is built only after that test produces a receipt.</p>
 
 <div class="table-wrap">
 <table>
@@ -957,13 +1070,30 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <tr><td>Legal / entity / guarantee opinion</td><td class="num">$15k</td><td>Delaware LLC, contract template, insurance/guarantee analysis</td></tr>
 <tr><td>Verification build</td><td class="num">$15k</td><td>T0 harness, evidence pipeline, calibration set</td></tr>
 <tr><td>Demand / partnerships</td><td class="num">$20k</td><td>One seller, audit-firm referrals, Base/Seer workshops</td></tr>
-<tr><td>Seer market liquidity</td><td class="num">$8k</td><td>4 markets × $2k, recoverable</td></tr>
+<tr><td>Seer market liquidity</td><td class="num">$8k</td><td>4 market positions × $2k seed; the binding market must attract the remaining $3k and 20 traders or it stays advisory; the losing branch is at risk</td></tr>
 <tr><td>Infrastructure / security</td><td class="num">$10k</td><td>RPC, storage, CI, audit of escrow</td></tr>
-<tr><td>Claims reserve</td><td class="num">$7k</td><td>1.5× 90-day expected claims on the first $250k guaranteed</td></tr>
-<tr class="total"><td>Total</td><td class="num">$75k</td><td>Prize ~$5.0k + founder $70.0k</td></tr>
+<tr><td>Claims reserve</td><td class="num">$7k</td><td>Expected claims on the first $250k guaranteed at 2.8%, rounded up; the 1.5× buffer is funded from the seed as the reserve grows</td></tr>
+<tr class="total"><td>Total</td><td class="num">$75k</td><td>Founder commit $75k; the contest prize, if awarded, is additional reserve and is not assumed</td></tr>
 </tbody>
 </table>
 </div>
+
+<h3 id="owners">Owners and the day-90 scorecard</h3>
+<p>The 90-day plan has one owner per workstream and one gate number per KPI. If a number is red at the gate, the gate fails; there is no composite score to hide behind.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Workstream</th><th>Owner</th><th>KPI</th><th class="num">Day-90 gate</th></tr></thead>
+<tbody>
+<tr><td>Legal / entity / guarantee opinion</td><td>Steward + counsel</td><td>Signed contract template; written opinion on file</td><td class="num">Both by week 2</td></tr>
+<tr><td>Demand / audit-firm partnerships</td><td>Demand lead</td><td>Paid pilots; signed contracts; partner LOIs</td><td class="num">3 pilots / 6–10 contracts / 5 partners</td></tr>
+<tr><td>Underwriting</td><td>Underwriter</td><td>GCV; loss ratio; reserve ratio</td><td class="num">$60k GCV; ≤55% LR; ≥150% reserve</td></tr>
+<tr><td>Verification</td><td>Verification lead</td><td>T2 sample; appeal rate; Cohen's κ</td><td class="num">10% sample; ≤3% appeals; κ ≥ 0.7</td></tr>
+<tr><td>Board / API</td><td>Engineering lead</td><td>Escrowed board tasks; API checks/day</td><td class="num">20 tasks; 100 checks/day</td></tr>
+<tr><td>Futarchy / Seer</td><td>Auditor + market maker</td><td>Binding market resolved; two-sided depth</td><td class="num">1 binding market; $5k / 20 traders</td></tr>
+</tbody>
+</table>
+</div>
+<p class="table-note">The day-90 loss-ratio gate is a ladder on the first two claims: ≤55% go; 55–70% narrow and reprice; above 70% stop the class. The 60% figure in §10 is the adverse-selection trigger after 100 claims, not the day-90 gate.</p>
 
 <h3>Kill criteria, published before the first dollar</h3>
 <ul>
@@ -1027,7 +1157,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 </div>
 
 <h3>Limitations of this plan</h3>
-<p>No Foreguild revenue, users or partners exist. The loss ratio, verification costs and error rates are targets or assumptions, not measurements. The Seer depth measurement is real but small: 127 funded conditional markets and $13,600 of liquidity is not a deep governance system. The legal characterization of the guarantee is unresolved and jurisdiction-specific. The model is sensitive to the loss ratio and the average ticket; a 10-point loss-ratio miss is $44k of Year-3 EBITDA, and a 30-point miss is $133k. The plan is written to make those weaknesses visible, not to hide them behind a total addressable market.</p>
+<p>No Foreguild revenue, users or partners exist. The loss ratio, verification costs and error rates are targets or assumptions, not measurements. The Seer depth measurement is real but small: 127 funded conditional markets and $13,600 of liquidity is not a deep governance system. The legal characterization of the guarantee is unresolved and jurisdiction-specific. The model is sensitive to the loss ratio and the average ticket; a 10-point loss-ratio miss is $44k of Year-3 EBITDA, and a 30-point miss is $133k. The external guarantee line — $4.0M of Year-3 guaranteed value — is the most aggressive assumption; the zero-case cuts Year-3 EBITDA by about $104k, and the first 10 external guarantees are a day-90 test. The plan is written to make those weaknesses visible, not to hide them behind a total addressable market.</p>
 </div>
 </section>
 
@@ -1047,11 +1177,12 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <tr><td>Average principal contract</td><td class="num">$5,000 → $6,000</td><td>ASSUMPTION. Anchored to audit-remediation ranges ($2.5k–$12k) and the buyer's cost of delay; no signed Foreguild contracts. Low–medium confidence.</td></tr>
 <tr><td>Principal direct cost</td><td class="num">64%</td><td>ASSUMPTION. Worker 55%, rework 6%, verification 2.5%, payment 0.5%. Medium confidence; measured after 100 contracts.</td></tr>
 <tr><td>Board take</td><td class="num">9%</td><td>ASSUMPTION. Below Upwork 19.7% and Fiverr 27.7%; the guarantee is the margin. Market-tunable 6–12%.</td></tr>
-<tr><td>Guarantee premium</td><td class="num">6.0%</td><td>ASSUMPTION. Priced from a 2.8% pure premium + 25% risk load + 1.8% expense + 0.6% capital + 1.0% margin. Market-tunable 4.5–9%.</td></tr>
+<tr><td>Guarantee premium</td><td class="num">6.0%</td><td>ASSUMPTION. Technical 6.3% = 2.8% pure + 0.7% risk load + 1.2% expense (verification 0.6, payment 0.1, fixed 0.5) + 0.6% capital + 1.0% margin. Model prices at 6.0% (0.7% margin) as a launch discount. Market-tunable 4.5–9%.</td></tr>
 <tr><td>Guarantee loss ratio</td><td class="num">46.7%</td><td>TARGET. Not observed. First 100 claims test it; bear case 108.3%.</td></tr>
 <tr><td>Board GMV</td><td class="num">$6.8M Y3</td><td>ASSUMPTION. Ramp from $10k to $750k/month over 36 months. Low confidence; the board is a distribution channel.</td></tr>
 <tr><td>Guarantee attach</td><td class="num">25% → 50%</td><td>ASSUMPTION. On board GMV plus external guarantees. Medium confidence; 20% is the kill threshold.</td></tr>
-<tr><td>API checks</td><td class="num">900k Y3</td><td>ASSUMPTION. 2k → 95k/month; $1.00 price, $0.30 cost. Low–medium confidence.</td></tr>
+<tr><td>External guaranteed value</td><td class="num">$25k / $125k / $333k per month</td><td>ASSUMPTION. Standalone guarantees on work sourced outside the board; low confidence. Zero-case Y3 EBITDA about $716k. The first 10 external guarantees are a day-90 test.</td></tr>
+<tr><td>API checks</td><td class="num">810k Y3</td><td>ASSUMPTION. 2k → 95k/month; $1.00 price, $0.30 cost. Low–medium confidence.</td></tr>
 <tr><td>Fixed costs</td><td class="num">$300k / $650k / $1.35M</td><td>ASSUMPTION. 2/6/12 FTE plus contractors, legal, infra, market liquidity. Bottom-up table in §08.</td></tr>
 <tr><td>Float yield</td><td class="num">4.0%</td><td>ASSUMPTION. USDC/T-bill yield; disclosed separately, never in underwriting margin.</td></tr>
 <tr><td>Seer liquidity floor</td><td class="num">$5,000 / 20 traders</td><td>MEASURED context: median funded conditional market $25.92; $5k is ~193× the median. Binding cap $50k.</td></tr>
@@ -1075,7 +1206,7 @@ ol.sources code{font:11px/1.4 var(--mono);background:#f0ebdf;padding:1px 4px}
 <h4>Unit economics</h4>
 <p class="mono small">LTV = ARPA × gross margin ÷ (1 − annual retention)</p>
 <p class="mono small">CAC payback (months) = CAC ÷ (ARPA × gross margin ÷ 12)</p>
-<p class="mono small">premium rate = PP × 1.25 + 0.018 + 0.006 + 0.010</p>
+<p class="mono small">premium rate = PP × 1.25 + 0.012 + 0.006 + 0.010</p>
 <p class="mono small">reserve ratio = claims reserve ÷ (next 90 days expected claims)</p>
 <p class="mono small">combined ratio = (claims + verification + payment + expense) ÷ premium</p>
 </div>

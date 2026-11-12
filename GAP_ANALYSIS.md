@@ -71,4 +71,4 @@ Why:
 | Core governance market | Fee, categories, spend | Loss ratio by class; premium, reserve, verification budget |
 | Verification | T0 + 10% human sample, blended $2.10 | T0–T4 with cost/error targets, appeals, calibration, P&L |
 | Evidence | Operator ledger (~140 actions, $2.08) | Operator ledger + Seer depth + claim census + 3-year model |
-| Length | 12 pages, ~3.5k words | 30 pages, ~13.2k words |
+| Length | 12 pages, ~3.5k words | 34 pages, ~16k words |

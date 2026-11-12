@@ -37,7 +37,7 @@ Every non-obvious factual claim in `index.html` is footnoted to one of the numbe
 25. **Insurance Business, “Unlock emerging specialty lines.”** Specialty combined ratios 32.1%–57.1% (2014–2024). https://www.insurancebusinessmag.com/us/news/excess-surplus/unlock-emerging-specialty-lines-a-growth-playbook-for-mgas-and-wholesale-brokers-549688.aspx
 26. **Gallagher Re, 2026 MGA market report.** $125B+ MGA premium in 2025; program-carrier net combined ratio in the low 90s. https://www.ajg.com/gallagherre/-/media/files/gallagher/gallagherre/news-and-insights/2026/june/mga-market-report-2026-reinsurance-capital-north-america.pdf
 27. **Aon, 2025 MGA Market and Outlook.** MGA loss ratios and growth. https://www.aon.com/getmedia/9bcce983-f8ba-4aa3-8e51-f70b1f9d1cf1/2025-MGA-Market-and-Outlook.pdf
-28. **POIDH bounty #1531, “FAO Operating Plan Contest.”** 0.5 ETH; 73 claims; deadline 12 Nov 2026 AoE. https://poidh.xyz/base/bounty/1531
+28. **POIDH bounty #1531, “FAO Operating Plan Contest.”** 0.5 ETH + 4,000 USDC; 73 claims; deadline 12 Nov 2026 AoE (13 Nov 11:59 UTC). https://poidh.xyz/base/bounty/1531
 29. **POIDH documentation and API.** https://docs.poidh.xyz/
 30. **Seer, “AI Markets.”** Prediction markets consumed by algorithms at machine speed. https://docs.seer.pm/whitepaper/applications/ai-markets
 31. **Seer, “Conditional Markets for Futarchy, Decision Markets & Info Finance.”** https://seer-pm.medium.com/conditional-markets-for-futarchy-decision-markets-info-finance-b1b317df7705

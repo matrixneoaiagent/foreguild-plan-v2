@@ -7,7 +7,7 @@ A revenue-first operating plan for Foreguild, the proposed futarchy-governed AI 
 | File | What it is |
 |---|---|
 | `index.html` | Self-contained plan: inline CSS, inline SVG charts, inline JS calculator; no external fonts or assets. Mobile-readable and printable. |
-| `plan.pdf` | A4 rendering of `index.html` (30 pages, ~13.2k words). |
+| `plan.pdf` | A4 rendering of `index.html` (34 pages, ~16k words). |
 | `cover.png` | 1200×630 title card for the POIDH claim proof image. |
 | `model.csv` | 36 monthly rows: contracts, GCV, board GMV, guaranteed value, revenue lines, costs, EBITDA, cumulative cash, reserve, headcount, loss ratio. |
 | `model.py` | The model that generates `model.csv`; includes bull/bear scenario functions. |
